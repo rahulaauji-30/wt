@@ -1,0 +1,201 @@
+<html>
+  <head>
+    <title>Installation</title>
+    <style>
+      body {
+        padding: 20px;
+        color: #402b3a;
+        background-color: #e9f6ff;
+      }
+
+      h1 {
+        color: #fe7a36;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 40px;
+      }
+      .btns {
+        display: flex;
+        justify-content: space-between;
+      }
+      .btn {
+        width: 60px;
+        padding: 10px;
+        background-color: #3652ad;
+        border-radius: 5px;
+        text-align: center;
+        align-items: flex-end;
+      }
+      .btn a {
+        font-style: bold;
+        text-decoration: none;
+        color: #fe7a36;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+      .btn a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="content">
+      <h1>Stored Procedures</h1>
+      <p>
+        Stored procedures in Oracle Database are named PL/SQL blocks that perform one or more specific tasks. They are compiled and stored in the database, and they can be called by other programs, procedures, or applications. Here's additional information about stored procedures in Oracle DBMS.
+      </p>
+      <ol>
+        <li>
+            <b>Creating a Simple Stored Procedure</b>
+            <ul>
+                <li>
+                    A basic stored procedure can be created using the CREATE PROCEDURE statement. Here's an example
+                    <pre>
+                        <code>
+                            CREATE OR REPLACE PROCEDURE greet_user (p_name IN VARCHAR2) IS
+                            BEGIN
+                                DBMS_OUTPUT.PUT_LINE('Hello, ' || p_name || '!');
+                            END greet_user;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>
+                Input and Output Parameters
+            </b>
+            <ul>
+                <li>
+                    Stored procedures can accept input parameters and provide output parameters. Input parameters are specified using the IN keyword, and output parameters use OUT or IN OUT.
+                    <pre>
+                        <code>
+                            CREATE OR REPLACE PROCEDURE calculate_salary (
+                                p_employee_id IN NUMBER,
+                                p_percentage_increase IN NUMBER,
+                                p_new_salary OUT NUMBER
+                            ) IS
+                            BEGIN
+                                -- Business logic to calculate new salary
+                                -- ...
+                                p_new_salary := calculated_salary;
+                            END calculate_salary;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Cursor Parameters</b>
+            <ul>
+                <li>
+                    Stored procedures can use cursors to process result sets. Cursor parameters are declared using the CURSOR data type.
+                    <pre>
+                        <code>
+                            CREATE OR REPLACE PROCEDURE get_employees_by_department (
+                                p_department_id IN NUMBER,
+                                p_employee_cursor OUT SYS_REFCURSOR
+                            ) IS
+                            BEGIN
+                                OPEN p_employee_cursor FOR
+                                SELECT * FROM employees WHERE department_id = p_department_id;
+                            END get_employees_by_department;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Exception Handling</b>
+            <ul>
+                <li>
+                    Stored procedures can handle exceptions using the EXCEPTION block, allowing you to catch and handle errors gracefully.
+                    <pre>
+                        <code>
+                            CREATE OR REPLACE PROCEDURE divide_numbers (
+                                p_dividend IN NUMBER,
+                                p_divisor IN NUMBER,
+                                p_result OUT NUMBER
+                            ) IS
+                            BEGIN
+                                IF p_divisor = 0 THEN
+                                    RAISE_APPLICATION_ERROR(-20001, 'Division by zero is not allowed.');
+                                ELSE
+                                    p_result := p_dividend / p_divisor;
+                                END IF;
+                            EXCEPTION
+                                WHEN OTHERS THEN
+                                    DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+                            END divide_numbers;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Dynamic SQL</b>
+            <ul>
+                <li>
+                    Stored procedures can use dynamic SQL to construct and execute SQL statements dynamically at runtime.
+                    <pre>
+                        <code>
+                            CREATE OR REPLACE PROCEDURE execute_dynamic_sql (
+                                p_sql_statement IN VARCHAR2
+                            ) IS
+                            BEGIN
+                                EXECUTE IMMEDIATE p_sql_statement;
+                            END execute_dynamic_sql;                            
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Dependencies and Compilation</b>
+            <ul>
+                <li>
+                    Stored procedures depend on other database objects, and any changes to these objects may require recompilation of the stored procedures.
+                    <pre>
+                        <code>
+                            ALTER PROCEDURE your_procedure COMPILE;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Executing a Stored Procedure</b>
+            <ul>
+                <li>
+                    You can execute a stored procedure using the EXECUTE statement or by calling it from another PL/SQL block or application code.
+                    <pre>
+                        <code>
+                            EXECUTE greet_user('John');
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Managing Stored Procedures</b>
+            <ul>
+                <li>
+                    Stored procedures can be modified using the CREATE OR REPLACE PROCEDURE statement. Use DROP PROCEDURE to remove a stored procedure.
+                    <pre>
+                        <code>
+                            DROP PROCEDURE greet_user;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+      </ol>
+      <p>Stored procedures in Oracle DBMS offer a way to encapsulate and execute reusable blocks of PL/SQL code. They provide a mechanism for modularizing business logic, improving code maintainability, and enhancing database performance. Understanding how to create, use, and manage stored procedures is a key aspect of database development in Oracle.</p>
+    </div>
+    <div class="btns">
+      <div class="btn">
+        <a id="previous" href="indexes.html">Previous</a>
+      </div>
+    </div>
+  </body>
+</html>

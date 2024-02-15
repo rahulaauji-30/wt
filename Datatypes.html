@@ -1,0 +1,231 @@
+<html>
+    <head>
+        <title>Installation</title>
+        <style>
+            body{
+                padding: 20px;
+                color: #402B3A;
+                background-color: #E9F6FF;
+            }
+             
+            h1{
+                color: #FE7A36;
+                font-family:'Times New Roman', Times, serif;
+                font-size: 40px;
+            }
+            .btns{
+                display: flex;
+                justify-content: space-between;
+            }
+            .btn{
+                width: 60px;
+                padding: 10px;
+                background-color: #3652AD;
+                border-radius: 5px;
+                text-align: center;align-items: flex-end;
+            }
+            .btn a{
+                font-style: bold;
+                text-decoration: none;
+                color: #FE7A36;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            .btn a:hover{
+                text-decoration: underline;
+            }
+        </style>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="content">
+       <h1>Data Types</h1>
+       <p>
+        In Oracle Database, data types define the type of data that can be stored in a column of a table or a variable. Each column in a table must be assigned a specific data type, which helps Oracle manage the storage and retrieval of data efficiently. Here's an overview of some commonly used data types in Oracle DBMS.
+       </p>
+       <ol>
+        <li>
+            <b>
+                Numeric Data Types
+            </b>
+            <ul>
+                <li>
+                   <b>NUMBER:</b> Used for storing fixed-point or floating-point numbers. It can have precision and scale.
+                   <pre>
+                    <code>
+                        salary NUMBER(10, 2);
+                    </code>
+                </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>
+                Character Data Types
+            </b>
+            <ul>
+                <li>
+                   <b>CHAR:</b>Fixed-length character data. Trailing spaces are padded.
+                   <pre>
+                    <code>
+                        first_name CHAR(50);
+                    </code>
+                </pre>
+                </li>
+                <li>
+                    <b>VARCHAR2:Variable-length character data. Trailing spaces are not padded.</b>
+                    <pre>
+                        <code>
+                            last_name VARCHAR2(50);
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>
+                Date and Time Data Types
+            </b>
+            <ul>
+                <li>
+                   <b>DATE:</b>Stores date and time values.
+                   <pre>
+                    <code>
+                        hire_date DATE;
+                    </code>
+                   </pre>
+                </li>
+                <li>
+                    <b>TIMESTAMP:</b>Stores date and time down to fractional seconds.
+                    <pre>
+                        <code>
+                            last_updated TIMESTAMP;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Large Object Data Types</b>
+            <ul>
+                <li>
+                    <b>CLOB (Character Large Object):</b>Stores large amounts of character data.
+                    <pre>
+                        <code>
+                            description CLOB;
+                        </code>
+                    </pre>
+                </li>
+                <li>
+                    <b>BLOB (Binary Large Object):</b>Stores binary data like images or documents.
+                    <pre>
+                        <code>
+                            document BLOB;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Boolean Data Type</b>
+            <ul>
+                <li>
+                    <b>BOOLEAN:</b>Represents binary (true/false) values. Introduced in Oracle 12c.
+                    <pre>
+                        <code>
+                            is_active BOOLEAN;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Row Identifier Data Types</b>
+            <ul>
+                <li>
+                    <b>ROWID:</b>Represents the unique address of a row in a table. It is often used internally by Oracle.
+                    <pre>
+                        <code>
+                            row_id ROWID;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Interval Data Type</b>
+            <ul>
+                <li>
+                    <b>INTERVAL YEAR TO MONTH:</b>Represents a period of time in years and months.
+                    <pre>
+                        <code>
+                            service_length INTERVAL YEAR TO MONTH;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>XML Data Type</b>
+            <ul>
+                <li>
+                    <b>XMLTYPE:</b>Stores XML data.
+                    <pre>
+                        <code>
+                            xml_data XMLTYPE;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Geospatial Data Types</b>
+            <ul>
+                <li>
+                    Oracle supports geospatial data types for handling spatial data.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>User-Defined Data Types</b>
+            <ul>
+                <li>
+                    <b>OBJECT Type:</b>Allows you to define your own data types using the CREATE TYPE statement.
+                    <pre>
+                        <code>
+                            CREATE TYPE rahul;
+                        </code>
+                    </pre>
+                </li>
+                <li>
+                    <b>VARRAY (Variable-Size Array):</b>An array with a variable size.
+                </li>
+                <li>
+                    <b>Nested Table:</b>A table with a varying number of rows.
+                </li>
+            </ul>
+        </li>
+       </ol>
+       <b>Examples</b>
+       <pre>
+        <code>
+            CREATE TABLE employees (
+                employee_id NUMBER(5) PRIMARY KEY,
+                first_name VARCHAR2(50),
+                last_name VARCHAR2(50),
+                hire_date DATE,
+                salary NUMBER(10, 2),
+                notes CLOB
+            );
+        </code>
+    </pre>
+        </div>
+        <div class="btns">
+            <div class="btn">
+                <a id="previous" href="gettingstarted.html">Previous</a>
+            </div>
+            <div class="btn">
+                <a href="constraint.html">Next</a>
+            </div>
+        </div>
+    </body>
+</html>

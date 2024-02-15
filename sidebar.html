@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>
+            sidebar
+        </title>
+        <style>
+            body{
+                background-color: #E9F6FF;
+                font-size: 20px;
+            }
+            a{
+                text-decoration: none;
+                color: #3652AD;
+            }
+            a:hover{
+                text-decoration: underline;
+                text-decoration-color: #FE7A36;
+                cursor: pointer;
+            }
+            a:active{
+                color: #FE7A36;
+            }
+            ul{
+                list-style-type: none;
+            }
+            li{
+                padding: 10px;
+            }
+            img{
+                width: 290px;
+                border-radius: 10px;
+                position: fixed;
+                bottom: 90px;
+            }
+        </style>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <ul>
+            <li>
+                <a href="" onclick="changeContent('content.html')">Introduction</a>
+            </li>
+            <li>
+                <a href="" onclick="changeContent('installation.html')">Installation</a>
+            </li>
+            <li>
+                <a href="" onclick="changeContent('gettingstarted.html')">Getting Started</a>
+            </li>
+            <li>
+                <a href="" onclick="changeContent('Datatypes.html')">Data Types</a>
+            </li>
+            <li>
+                <a href="" onclick="changeContent('constraint.html')">Constraints</a>
+            </li>
+            <li>
+                <a href="" onclick="changeContent('indexes.html')">Indexes</a>
+            </li>
+            <li>
+                <a href="" target="" onclick="changeContent('storeprocedures.html')">Stored Procedures</a>
+            </li>
+        </ul>
+        <img id="ad" src="ads/ad4.png" alt="">
+    </body>
+    <script>
+        function changeContent(url){
+            parent.frames['content'].location.href = url;
+            console.log(parent.frames['content'].location.href);
+        }
+
+        function changeAd(){
+            const ads = ["ad4.png","ad5.jpeg","ad6.jpeg"]
+            let index = 0
+            index = (index + 1) % ads.length;
+            document.getElementById("ad").src = "ads/"+ads[index]
+            console.log(index)
+        }
+        setInterval(changeAd, 10000)
+    </script>
+</html>

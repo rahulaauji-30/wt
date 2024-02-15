@@ -1,0 +1,198 @@
+<html>
+  <head>
+    <title>Installation</title>
+    <style>
+      body {
+        padding: 20px;
+        color: #402b3a;
+        background-color: #e9f6ff;
+      }
+
+      h1 {
+        color: #fe7a36;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 40px;
+      }
+      .btns {
+        display: flex;
+        justify-content: space-between;
+      }
+      .btn {
+        width: 60px;
+        padding: 10px;
+        background-color: #3652ad;
+        border-radius: 5px;
+        text-align: center;
+        align-items: flex-end;
+      }
+      .btn a {
+        font-style: bold;
+        text-decoration: none;
+        color: #fe7a36;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+      .btn a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="content">
+      <h1>Indexes</h1>
+    <p>Indexes in Oracle Database are database objects that provide a fast and efficient way to retrieve data from tables. They enhance the speed of data retrieval operations but can also impact the performance of data modification operations (insert, update, delete). Here's additional information about indexes in Oracle DBMS.</p>
+    <ol>
+        <li>
+            <b>Creating an Index</b>
+            <ul>
+                <li>
+                    <p>Use the CREATE INDEX statement to create an index on one or more columns of a table. Here's an example:</p>
+                    <pre>
+                        <code>
+                            CREATE INDEX idx_last_name ON employees(last_name);
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Types of Indexes</b>
+            <ul>
+                <li>
+                    <p><b>B-Tree Indexes:</b> The most common type of index in Oracle. It organizes data in a balanced tree structure.</p>
+                    <pre>
+                        <code>
+                            CREATE INDEX idx_salary ON employees(salary);
+                        </code>
+                    </pre>
+                </li>
+                <li>
+                    <p><b>Bitmap Indexes:</b> Suitable for columns with low cardinality (few distinct values).</p>
+                    <pre>
+                        <code>
+                            CREATE INDEX idx_salary ON employees(salary);
+                        </code>
+                    </pre>
+                </li>
+                <li>
+                    <p><b>Function-Based Indexes:</b> Created based on a function applied to the columns.</p>
+                    <pre>
+                        <code>
+                            CREATE INDEX idx_upper_last_name ON employees(UPPER(last_name));
+                        </code>
+                    </pre>
+                </li>
+                <li>
+                    <p><b>Clustered Indexes:</b> In Oracle, the equivalent is a Cluster, which is a group of tables physically stored together based on the clustering key.</p>
+                    <pre>
+                        <code>
+                            CREATE CLUSTER employees_cluster (employee_id NUMBER)
+                            SIZE 8192;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Unique Index</b>
+            <ul>
+                <li>Ensures that all values in the indexed column(s) are unique.
+                    <pre>
+                        <code>
+                            CREATE UNIQUE INDEX idx_email ON employees(email);
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Descending Index</b>
+            <ul>
+                <li>
+                    Specifies that the index should be in descending order. Useful for sorting queries in descending order.
+                    <pre>
+                        <code>
+                            CREATE INDEX idx_hire_date_desc ON employees(hire_date DESC);
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Function-Based Index</b>
+            <ul>
+                <li>
+                    Creates an index based on the result of a function or expression.
+                    <pre>
+                        <code>
+                            CREATE INDEX idx_salary_log ON employees(LOG(salary));
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Invisible Index</b>
+            <ul>
+                <li>
+                    An index that is not considered by the optimizer unless explicitly specified in a query.
+                    <pre>
+                        <code>
+                            CREATE INDEX idx_invisible ON employees(last_name) INVISIBLE;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Rebuilding and Maintaining Indexes</b>
+            <ul>
+                <li>
+                    Indexes can be rebuilt or reorganized to improve performance. Use the ALTER INDEX statement for maintenance.
+                    <pre>
+                        <code>
+                            ALTER INDEX idx_last_name REBUILD;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Dropping an Index</b>
+            <ul>
+                <li>
+                    Use the DROP INDEX statement to remove an index from the database.
+                    <pre>
+                        <code>
+                            DROP INDEX idx_last_name;
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Monitoring Index Usage</b>
+            <ul>
+                <li>
+                    You can query the V$OBJECT_USAGE view to monitor the usage of an index.
+                    <pre>
+                        <code>
+                            SELECT * FROM V$OBJECT_USAGE WHERE OBJECT_NAME = 'IDX_LAST_NAME';
+                        </code>
+                    </pre>
+                </li>
+            </ul>
+        </li>
+    </ol>
+    </div>
+    <div class="btns">
+      <div class="btn">
+        <a id="previous" href="Datatypes.html">Previous</a>
+      </div>
+      <div class="btn">
+        <a href="storeprocedures.html">Next</a>
+      </div>
+    </div>
+  </body>
+</html>

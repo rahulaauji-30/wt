@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advertisement</title>
+    <style>
+        #adImage{
+            position: fixed;
+            top: 100px;
+        }
+        #adImage2{
+            position: fixed;
+            bottom: 100px;
+        }
+        img{
+            border-radius: 10px;
+            width: 288px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body bgcolor="#E9F6FF">
+    <img id="adImage" src="https://tpc.googlesyndication.com/simgad/8169744333071237861" border="0" width="100%" height="90" alt class="img_ad">
+    <img id="adImage2" src="https://tpc.googlesyndication.com/simgad/8169744333071237861" border="0" width="100%" height="90" alt class="img_ad">
+    <script>
+        var adImages = ["ad1.jpeg","ad2.png","ad3.jpeg"]; // Add URLs of your ads here
+        var currentIndex = 0;
+
+        function changeAd() {
+            currentIndex = (currentIndex + 1) % adImages.length;
+            document.getElementById('adImage').src = "ads/"+adImages[currentIndex];
+        }
+        function changeAd2() {
+            currentIndex = (currentIndex + 1) % adImages.length;
+            document.getElementById('adImage2').src = "ads/"+adImages[currentIndex];
+        }
+        setInterval(changeAd, 10000); // Change ad every 10 seconds
+        setInterval(changeAd2, 10000)
+    </script>
+</body>
+</html>

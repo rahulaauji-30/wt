@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>Installation</title>
+        <style>
+            body{
+                padding: 20px;
+                color: #402B3A;
+                background-color: #E9F6FF;
+            }
+             
+            h1{
+                color: #FE7A36;
+                font-family:'Times New Roman', Times, serif;
+                font-size: 40px;
+            }
+            .content{
+                margin-top: 70px;
+            }
+            .btns{
+                display: flex;
+                justify-content: space-between;
+            }
+            .btn{
+                width: 60px;
+                padding: 10px;
+                background-color: #3652AD;
+                border-radius: 5px;
+                text-align: center;align-items: flex-end;
+            }
+            .btn a{
+                font-style: bold;
+                text-decoration: none;
+                color: #FE7A36;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            .btn a:hover{
+                text-decoration: underline;
+            }
+        </style>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="content">
+            <h1>Getting Started</h1>
+            <b>Basic SQL Commands</b>
+            <p>Begin your exploration with fundamental SQL commands for database interaction</p>
+            <div class="code">
+                <pre>
+                    <code>
+                    -- Create a table
+                    CREATE TABLE employees (
+                        employee_id NUMBER PRIMARY KEY,
+                        first_name VARCHAR2(50),
+                        last_name VARCHAR2(50),
+                        hire_date DATE,
+                        salary NUMBER
+                    );
+                    </code>
+                    <code>
+                    --Insert data into the table
+                    INSERT INTO employees (employee_id, first_name, last_name, hire_date, salary)
+                    VALUES (1, 'John', 'Doe', TO_DATE('2024-01-01', 'YYYY-MM-DD'), 50000);
+                    </code>
+                    <code>
+                    -- Query data
+                    SELECT * FROM employees;
+                    </code>
+                    </pre>
+            </div>
+        </div>
+        <div class="btns">
+            <div class="btn">
+                <a id="previous" href="installation.html">Previous</a>
+            </div>
+            <div class="btn">
+                <a href="Datatypes.html">Next</a>
+            </div>
+        </div>
+    </body>
+</html>
